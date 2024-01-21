@@ -1,0 +1,24 @@
+//alexis sutch
+
+@startuml
+start
+:Log in as Parent;
+:Access Dashboard;
+if (Select Child Account) then (yes)
+  :View Child Activities;
+  :Return to Dashboard;
+  if (See Class Schedule?) then (yes)
+    :Access Class Schedule;
+  else (no)
+    :Return to Dashboard;
+  endif
+else (no)
+  if (View Transaction History?) then (yes)
+    :Access Transaction History;
+  else (no)
+    :Return to Dashboard;
+  endif
+endif
+:Logout as Parent;
+stop
+@enduml

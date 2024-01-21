@@ -1,0 +1,12 @@
+@startuml
+class TransactionController {
+    -parentRepository : ParentRepository
+    -transactionRepository : TransactionRepository
+    +showPaymentForm()
+    +processPayment()
+    +parentPaymentForm()
+}
+
+TransactionController "1" -- "1" ParentRepository
+TransactionController "1" -- "1" TransactionRepository
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+actor "User" as U
+rectangle "Logon Controller" {
+  (Access Dashboard) as UC1
+  (See Studio Schedule) as UC2
+  (See Associated Functions) as UC4
+  (Register) as UC5
+  (Process Registration) as UC6
+  (Determine User Role) as UC7
+  (Email Exists in Table) as UC8
+  (Redirect to Dashboard) as UC10
+  (Login Success) as UC11
+}
+
+U -- UC1
+U -- UC5
+UC5 --> UC6
+UC6 --> UC7
+UC7 --> UC8
+UC8 --> UC10
+UC10 --> UC11
+UC1 --> UC2
+UC1 --> UC4
+@enduml

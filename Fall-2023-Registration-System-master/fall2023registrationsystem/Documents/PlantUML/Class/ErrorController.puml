@@ -1,0 +1,8 @@
+
+@startuml
+class ErrorController {
+
+    + handle403() : String
+}
+
+@enduml

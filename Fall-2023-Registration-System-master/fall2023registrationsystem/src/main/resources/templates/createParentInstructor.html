@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Create New User</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/dropDownArrow.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.label-width {
+			width: 220px;
+		}
+
+		.label-width-parent {
+			width: 220px;
+		}
+
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+	<script>
+		function toggleFields() {
+			const role = document.getElementById("role").value;
+			const instructorFields = document.getElementById("instructorFields");
+			const parentFields = document.getElementById("parentFields");
+
+
+			instructorFields.style.display = "none";
+			parentFields.style.display = "none";
+
+
+			if (role === "INSTRUCTOR") {
+				instructorFields.style.display = "block";
+			} else if (role === "PARENT") {
+				parentFields.style.display = "block";
+			}
+
+			document.querySelectorAll('[data-role-field]').forEach(field => {
+				field.removeAttribute('name');
+			});
+
+			document.querySelectorAll(`[data-role-field=${role}]`).forEach(field => {
+				field.setAttribute('name', field.getAttribute('data-name'));
+			});
+		}
+
+		function validate(e) {
+			e.preventDefault();
+			const role = document.getElementById("role").value;
+			const roleFields = document.querySelectorAll(`[data-role-field=${role}]`);
+			let allFieldsEntered = true;
+
+			roleFields.forEach(field => {
+				if (field.value === "") {
+					allFieldsEntered = false;
+				}
+			});
+
+			if (allFieldsEntered) {
+				e.target.submit();
+			}
+
+			else {
+				alert("Please fill out all of the fields.");
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			toggleFields();
+			document.querySelector('form').addEventListener('submit', validate);
+		});
+	</script>
+</head>
+
+<body onload="toggleFields()">
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<div>
+			<h2>Create New User</h2>
+		</div>
+
+		<form th:action="@{/manager/createInstructor}" method="post" style="max-width: 1200px; margin: 0 auto;">
+			<div class="m-3">
+				<div class="form-group row custom-select-container">
+					<label class="col-4 col-form-label label-width">Select Role:</label>
+					<div class="col-6">
+						<select id="role" name="role" class="form-control custom-select" onchange="toggleFields()">
+							<option value="INSTRUCTOR">Instructor</option>
+							<option value="PARENT">Parent</option>
+						</select>
+						<div class="select-arrow2">&#9660;</div>
+					</div>
+				</div>
+
+				<div id="instructorFields" style="display:none;">
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Last Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="INSTRUCTOR" data-name="lastName" class="form-control"
+								placeholder="Last Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">First Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="INSTRUCTOR" data-name="firstName" class="form-control"
+								placeholder="First Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Email:</label>
+						<div class="col-6">
+							<input type="email" data-role-field="INSTRUCTOR" data-name="email" class="form-control"
+								placeholder="Email" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Phone Number:</label>
+						<div class="col-6">
+							<input type="tel" pattern="\d{3}-\d{3}-\d{4}" data-role-field="INSTRUCTOR"
+								data-name="instructorPhoneNum" class="form-control"
+								placeholder="Phone Number (XXX-XXX-XXXX)" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Specialty:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="INSTRUCTOR" data-name="specialty" class="form-control"
+								placeholder="Specialty" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Studio A:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="INSTRUCTOR" data-name="studioA" class="form-control"
+								placeholder="Studio A" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Studio B:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="INSTRUCTOR" data-name="studioB" class="form-control"
+								placeholder="Studio B" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Password:</label>
+						<div class="col-6">
+							<input type="password" data-role-field="INSTRUCTOR" data-name="password"
+								class="form-control" placeholder="Password" />
+						</div>
+					</div>
+				</div>
+
+				<div id="parentFields" style="display:none;">
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 1 First Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="parent1FirstName"
+								class="form-control" placeholder="Parent 1 First Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 1 Last Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="parent1LastName" class="form-control"
+								placeholder="Parent 1 Last Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 1 Phone #:</label>
+						<div class="col-6">
+							<input type="tel" pattern="\d{3}-\d{3}-\d{4}" data-role-field="PARENT"
+								data-name="parent1PhoneNum" class="form-control"
+								placeholder="Parent 1 Number (XXX-XXX-XXXX)" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 2 First Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="parent2FirstName"
+								class="form-control" placeholder="Parent 2 First Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 2 Last Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="parent2LastName" class="form-control"
+								placeholder="Parent 2 Last Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Parent 2 Phone #:</label>
+						<div class="col-6">
+							<input type="tel" pattern="\d{3}-\d{3}-\d{4}" data-role-field="PARENT"
+								data-name="parent2PhoneNum" class="form-control"
+								placeholder="Parent 2 Number (XXX-XXX-XXXX)" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Primary Email:</label>
+						<div class="col-6">
+							<input type="email" data-role-field="PARENT" data-name="email" class="form-control"
+								placeholder="Primary Email" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Primary Address:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="primaryAddress" class="form-control"
+								placeholder="Primary Address" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Emergency Contact Name:</label>
+						<div class="col-6">
+							<input type="text" data-role-field="PARENT" data-name="eContName" class="form-control"
+								placeholder="Emergency Contact Name" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Emergency Contact #:</label>
+						<div class="col-6">
+							<input type="tel" pattern="\d{3}-\d{3}-\d{4}" data-role-field="PARENT" data-name="eContNum"
+								class="form-control" placeholder="Emergency Contact Number (XXX-XXX-XXXX)" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width-parent">Password:</label>
+						<div class="col-6">
+							<input type="password" data-role-field="PARENT" data-name="password" class="form-control"
+								placeholder="Password" />
+						</div>
+					</div>
+				</div>
+				<br><br>
+
+				<div class="d-grid gap-2 col-8 mx-auto">
+					<button type="submit" class="btn btn-info">Create Account</button>
+					<a th:href="@{/dashboards}" class="btn btn-secondary">Back to Dashboard</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

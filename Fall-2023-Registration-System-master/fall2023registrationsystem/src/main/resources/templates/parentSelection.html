@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Parent Selection</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script>
+		function handlePayment() {
+			const selectedParentId = document.getElementById('parentDropdown').value;
+			if (selectedParentId) {
+				document.getElementById('parentForm').action = `/payment?parentID=${selectedParentId}`;
+				document.getElementById('parentForm').submit();
+			} else {
+				alert('Please Select a Parent!');
+			}
+		}
+	</script>
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Select a Parent</h2><br>
+		<form id="parentForm" th:action="@{/payment}" method="get">
+			<select id="parentDropdown" name="parentID" required>
+				<option value="">--please select a parent--</option>
+				<option th:each="parent : ${parents}" th:value="${parent.parentID}" th:text="${parent.parent1Name}">
+				</option>
+			</select><br><br>
+			<button type="button" onclick="handlePayment()" class="btn btn-info btn-sm">Proceed to Payment</button>
+		</form>
+	</div>
+</body>
+
+</html>

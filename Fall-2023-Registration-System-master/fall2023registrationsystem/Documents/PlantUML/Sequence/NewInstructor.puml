@@ -1,0 +1,13 @@
+@startuml
+actor Admin
+participant "InstructorController" as IC
+entity "InstructorService" as IS
+database "InstructorRepository" as IR
+
+Admin -> IC : addInstructor(instructorDetails)
+IC -> IS : createInstructor(instructorDetails)
+IS -> IR : save(newInstructor)
+IR --> IS : instructorSaved
+IS --> IC : creationConfirmation
+IC --> Admin : displayCreationConfirmation
+@enduml

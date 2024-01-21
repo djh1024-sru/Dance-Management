@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title>Admin File Upload</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script>
+		function submitForm() {
+			document.getElementById('uploadAdminForm').submit();
+		}
+	</script>
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Admin File Upload</h2><br>
+		<form method="POST" th:action="@{/uploadAdminFile}" enctype="multipart/form-data">
+    		<div class="form-group">
+        		<p>Please select the admin file to upload:</p>
+        		<input type="file" class="form-control-file" id="file" name="file">
+   			 </div>
+    		<button type="submit" class="btn btn-info btn-sm">Upload File</button>
+		</form>
+		<br>
+		<p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+		<p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+		<a th:href="@{/dashboards}" class="btn btn-secondary btn-sm btn-block">Back to Dashboard</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Activity Schedule</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="container mt-4">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="sr-tab" data-toggle="tab" href="#slipperyrock" role="tab"
+					aria-controls="slipperyrock" aria-selected="true">Slippery Rock</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="gc-tab" data-toggle="tab" href="#grovecity" role="tab" aria-controls="grovecity"
+					aria-selected="false">Grove City</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="mercer-tab" data-toggle="tab" href="#mercer" role="tab" aria-controls="mercer"
+					aria-selected="false">Mercer</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="sharon-tab" data-toggle="tab" href="#sharon" role="tab" aria-controls="sharon"
+					aria-selected="false">Sharon</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<!-- Slippery Rock Schedule -->
+			<div class="tab-pane fade show active" id="slipperyrock" role="tabpanel" aria-labelledby="sr-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Activity ID</th>
+							<th>Activity Level</th>
+							<th>Day of Week</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="activity : ${SlipperyRockActivities}">
+							<td th:text="${activity.activityID}"></td>
+							<td th:text="${activity.activityLevel}"></td>
+							<td th:text="${#strings.capitalize(#strings.toLowerCase(activity.weekDay))}"></td>
+							<td th:text="${#temporals.format(activity.startTime, 'hh:mm a')}"></td>
+							<td th:text="${#temporals.format(activity.endTime, 'hh:mm a')}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Grove City Schedule -->
+			<div class="tab-pane fade" id="grovecity" role="tabpanel" aria-labelledby="gc-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Activity ID</th>
+							<th>Activity Level</th>
+							<th>Day of Week</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="activityGC : ${GroveCityActivities}">
+							<td th:text="${activityGC.activityID}"></td>
+							<td th:text="${activityGC.activityLevel}"></td>
+							<td th:text="${#strings.capitalize(#strings.toLowerCase(activityGC.weekDay))}"></td>
+							<td th:text="${#temporals.format(activityGC.startTime, 'hh:mm a')}"></td>
+							<td th:text="${#temporals.format(activityGC.endTime, 'hh:mm a')}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Mercer Schedule -->
+			<div class="tab-pane fade" id="mercer" role="tabpanel" aria-labelledby="mercer-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Activity ID</th>
+							<th>Activity Level</th>
+							<th>Day of Week</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="activityMercer : ${MercerActivities}">
+							<td th:text="${activityMercer.activityID}"></td>
+							<td th:text="${activityMercer.activityLevel}"></td>
+							<td th:text="${#strings.capitalize(#strings.toLowerCase(activityMercer.weekDay))}"></td>
+							<td th:text="${#temporals.format(activityMercer.startTime, 'hh:mm a')}"></td>
+							<td th:text="${#temporals.format(activityMercer.endTime, 'hh:mm a')}"></td>
+       					</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Parent Users Tab -->
+			<div class="tab-pane fade" id="sharon" role="tabpanel" aria-labelledby="sharon-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Activity ID</th>
+							<th>Activity Level</th>
+							<th>Day of Week</th>
+							<th>Start Time</th>
+							<th>End Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="activitySharon : ${SharonActivities}">
+							<td th:text="${activitySharon.activityID}"></td>
+							<td th:text="${activitySharon.activityLevel}"></td>
+							<td th:text="${#strings.capitalize(#strings.toLowerCase(activitySharon.weekDay))}"></td>
+							<td th:text="${#temporals.format(activitySharon.startTime, 'hh:mm a')}"></td>
+							<td th:text="${#temporals.format(activitySharon.endTime, 'hh:mm a')}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+<br><br>
+</body>
+
+</html>

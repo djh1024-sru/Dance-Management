@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant "AccountController" as AC
+entity "CustomUserDetailsService" as CUDS
+entity "UserDetailsService" as UDS
+database "UserRepository" as UR
+
+User -> AC : login(username, password)
+AC -> CUDS : loadUserByUsername(username)
+CUDS -> UR : findUserByUsername(username)
+UR --> CUDS : userDetails
+CUDS --> AC : authenticationToken
+AC --> User : accessGranted
+@enduml

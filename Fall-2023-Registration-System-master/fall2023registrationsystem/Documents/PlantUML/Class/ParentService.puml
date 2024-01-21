@@ -1,0 +1,5 @@
+@startuml
+class ParentService {
+    - TransactionRepository transactionRepo
+}
+@enduml

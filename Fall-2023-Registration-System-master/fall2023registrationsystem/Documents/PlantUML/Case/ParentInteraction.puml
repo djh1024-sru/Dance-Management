@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+actor "Parent" as P
+rectangle "Parent Interaction System" {
+  (Access Dashboard) as UC1
+  (Select Child Account) as UC2
+  (View Child Activities) as UC3
+}
+
+P -- UC1
+P -- UC2
+P -- UC3
+@enduml

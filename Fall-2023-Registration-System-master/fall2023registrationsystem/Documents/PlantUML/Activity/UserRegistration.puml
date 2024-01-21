@@ -1,0 +1,22 @@
+@startuml
+start
+:Enter user details (registration);
+:Validate user details;
+if (Details valid?) then (yes)
+  :Create user account;
+  :Assign default role;
+else (no)
+  :Display error message;
+  stop
+endif
+:Log in to account;
+if (Update details?) then (yes)
+  :Edit user information;
+  :Save changes;
+endif
+if (Change role?) then (yes)
+  :Update user role;
+endif
+:Log out;
+stop
+@enduml

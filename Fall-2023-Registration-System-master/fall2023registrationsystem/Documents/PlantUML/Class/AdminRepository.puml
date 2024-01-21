@@ -1,0 +1,14 @@
+
+@startuml
+interface AdminRepository {
+    + findByEmail(email : String) : Admin
+    + existsByEmail(email : String) : boolean
+    + deleteByEmail(email : String) : void
+}
+
+class Admin {
+}
+
+AdminRepository ..> Admin : queries
+
+@enduml

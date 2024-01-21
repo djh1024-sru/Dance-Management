@@ -1,0 +1,15 @@
+
+@startuml
+class AdminController {
+    - passwordEncoder : BCryptPasswordEncoder
+
+    + {method signatures for handling web requests}
+
+}
+
+class BCryptPasswordEncoder {
+}
+
+AdminController --> "1" BCryptPasswordEncoder : uses
+
+@enduml

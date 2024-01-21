@@ -1,0 +1,16 @@
+@startuml
+class Parent {
+    - Integer parentID
+    - String parent1Name
+    - String parent1PhoneNum
+    - String parent2Name
+    - String parent2PhoneNum
+    - String email
+    - String primaryAddress
+    - String eContName
+    - String eContNum
+    - String password
+    - String role
+    - Float balance
+}
+@enduml

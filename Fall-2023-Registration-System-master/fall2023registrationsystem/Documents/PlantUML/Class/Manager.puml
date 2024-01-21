@@ -1,0 +1,29 @@
+
+@startuml
+class Manager {
+    - managerID : String
+    - lastName : String
+    - firstName : String
+    - email : String
+    - managerPhoneNum : String
+    - password : String
+    - role : String
+
+    + Manager(managerID : String, lastName : String, firstName : String, email : String, managerPhoneNum : String)
+    + getPassword() : String
+    + setPassword(password : String) : void
+    + getRole() : String
+    + setRole(role : String) : void
+    + getManagerID() : String
+    + setManagerID(managerID : String) : void
+    + getLastName() : String
+    + setLastName(lastName : String) : void
+    + getFirstName() : String
+    + setFirstName(firstName : String) : void
+    + getEmail() : String
+    + setEmail(email : String) : void
+    + getManagerPhoneNum() : String
+    + setManagerPhoneNum(managerPhoneNum : String) : void
+}
+
+@enduml

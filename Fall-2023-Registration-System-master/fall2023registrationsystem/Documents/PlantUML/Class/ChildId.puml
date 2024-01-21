@@ -1,0 +1,12 @@
+
+@startuml
+class ChildId {
+    - childID : int
+    - activityID : String
+    - activityLevel : Integer
+
+    + ChildId(childID : int, activityID : String, activityLevel : Integer)
+    + ChildId()
+}
+
+@enduml

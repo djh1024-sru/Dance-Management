@@ -1,0 +1,11 @@
+@startuml
+actor Instructor
+participant "ActivityServiceImpl" as ASI
+database "ActivitiesRepository" as AR
+entity "Activities" as A
+
+Instructor -> ASI : viewActivitiesByLocation(locationName)
+ASI -> AR : findByLocationName(locationName)
+AR --> ASI : activitiesList
+ASI --> Instructor : displayActivities(activitiesList)
+@enduml

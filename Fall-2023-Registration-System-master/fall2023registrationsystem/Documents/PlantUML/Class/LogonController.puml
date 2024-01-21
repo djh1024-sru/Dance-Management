@@ -1,0 +1,14 @@
+
+@startuml
+class LogonController {
+    - bCryptPasswordEncoder : BCryptPasswordEncoder
+
+    + {method signatures for handling logon and authentication requests}
+}
+
+class BCryptPasswordEncoder {
+}
+
+LogonController --> "1" BCryptPasswordEncoder : uses
+
+@enduml

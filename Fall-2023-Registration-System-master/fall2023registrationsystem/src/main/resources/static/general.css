@@ -1,0 +1,34 @@
+:root {
+	--first-color: rgb(158, 202, 216);
+	--second-color: rgb(238, 235, 235);
+}
+
+body {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+	font-size: 30;
+	color: var(--first-color);
+	text-align: center;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	text-align: center;
+	align-items: center;
+}
+
+h2 {
+	font-size: 15;
+	color: var(--first-color);
+	text-align: center;
+}
+
+.btn-info {
+	background-color: var(--first-color);
+	border-color: var(--first-color);
+}

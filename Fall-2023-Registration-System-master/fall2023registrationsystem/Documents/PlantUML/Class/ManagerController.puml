@@ -1,0 +1,14 @@
+
+@startuml
+class ManagerController {
+    - bCryptPasswordEncoder : BCryptPasswordEncoder
+
+    + {method signatures for handling manager related web requests}
+}
+
+class BCryptPasswordEncoder {
+}
+
+ManagerController --> "1" BCryptPasswordEncoder : uses
+
+@enduml

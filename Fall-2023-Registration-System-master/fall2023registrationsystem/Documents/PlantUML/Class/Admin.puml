@@ -1,0 +1,29 @@
+
+@startuml
+class Admin {
+    - adminID : String
+    - lastName : String
+    - firstName : String
+    - email : String
+    - adminPhoneNum : String
+    - password : String
+    - role : String
+
+    + Admin(adminID : String, lastName : String, firstName : String, email : String, adminPhoneNum : String)
+    + getPassword() : String
+    + setPassword(password : String) : void
+    + getRole() : String
+    + setRole(role : String) : void
+    + getLastName() : String
+    + setLastName(lastName : String) : void
+    + getFirstName() : String
+    + setFirstName(firstName : String) : void
+    + getEmail() : String
+    + setEmail(email : String) : void
+    + getAdminPhoneNum() : String
+    + setAdminPhoneNum(adminPhoneNum : String) : void
+    + getAdminID() : String
+    + setAdminID(adminID : String) : void
+}
+
+@enduml

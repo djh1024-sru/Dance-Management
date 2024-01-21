@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant "TransactionController" as TC
+entity "TransactionService" as TS
+database "TransactionRepository" as TR
+
+User -> TC : requestTransactionHistory(userId)
+TC -> TS : getTransactionsByUserId(userId)
+TS -> TR : findByUserId(userId)
+TR --> TS : transactionsList
+TS --> TC : transactionHistory
+TC --> User : displayTransactionHistory(transactionsList)
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+start
+:Log in;
+if (isFirstLogon) then (yes)
+    :Show Change Password Form;
+    :Change Password;
+    if (Successful Logon?) then (yes)
+        :Log in;
+        stop
+    else (no)
+        :Try Again;
+        stop
+    endif
+else (no)
+	:View Account Details;
+    :Update User Account Details;
+    stop
+endif
+@enduml

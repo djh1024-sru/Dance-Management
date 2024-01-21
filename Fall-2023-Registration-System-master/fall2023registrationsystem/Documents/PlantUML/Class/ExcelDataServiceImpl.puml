@@ -1,0 +1,29 @@
+
+@startuml
+class ExcelDataServiceImpl {
+
+    + {methods implementing ExcelDataService interface}
+}
+
+interface ExcelDataService {
+}
+
+class Workbook {
+}
+
+class Sheet {
+}
+
+class Row {
+}
+
+class Cell {
+}
+
+ExcelDataServiceImpl -up-|> ExcelDataService : implements
+ExcelDataServiceImpl --> "1" Workbook : uses
+ExcelDataServiceImpl --> "1" Sheet : uses
+ExcelDataServiceImpl --> "1" Row : uses
+ExcelDataServiceImpl --> "1" Cell : uses
+
+@enduml

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Child Assignment</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/dropDownArrow.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.label-width {
+			width: 150px;
+		}
+
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+	<script>
+		function toggleFields() {
+			const activityID = document.getElementById("activityID").value;
+			const activityLevel = document.getElementById("activityLevel").value;
+			const studioID = document.getElementById("studioID").value;
+
+			activityID.style.display = "none";
+
+			if (activityID === "ACRO" || activityID === "BALLET" || activityID === "GYMNASTICS" || activityID === "HIPHOP" || activityID === "JAZZ" || activityID === "MODERN" || activityID === "POINT" || activityID === "TAP") {
+				activityID.style.display = "block";
+			} else {
+				activityID.style.display = "none";
+			}
+			
+			if (activityLevel === "1" || activityLevel === "2" || activityLevel === "3") {
+				activityID.style.display = "block";
+			} else {
+				activityID.style.display = "none";
+			}
+
+			if (studioID === "1" || studioID === "2" || studioID === "3" || studioID === "4") {
+				activityID.style.display = "block";
+			} else {
+				activityID.style.display = "none";
+			}
+
+			document.querySelectorAll('[data-role-field]').forEach(field => {
+				field.removeAttribute('name');
+			});
+
+			document.querySelectorAll(`[data-role-field=${activityID}]`).forEach(field => {
+				field.setAttribute('name', field.getAttribute('data-name'));
+			});
+
+			document.querySelectorAll(`[data-role-field=${activityLevel}]`).forEach(field => {
+				field.setAttribute('name', field.getAttribute('data-name'));
+			});
+
+			document.querySelectorAll(`[data-role-field=${studioID}]`).forEach(field => {
+				field.setAttribute('name', field.getAttribute('data-name'));
+			});
+		}
+		
+		function recordRegistrationDate() {
+			const date = new Date().toISOString();
+			document.getElementById('registrationDate').value = date;
+		}
+	</script>
+</head>
+
+<body>
+
+	<body onload="toggleFields()">
+		<div class="header">
+			<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+			<div class="header-right">
+				<a class="active" th:href="@{/dashboards}">Home</a>
+				<a th:href="@{/account}">Account</a>
+				<a th:href="@{/logout}">Sign Out</a>
+			</div>
+		</div>
+
+		<div class="centerContainer">
+			<h3>Input the Class Assignment for: <br><span th:text="${child.firstName} + ' ' + ${child.lastName}"></span></h3>
+			<form th:action="@{/submitAssignment}" th:object="${childAssignment}" method="post" id="childForm">
+						<input type="hidden" name="childID" th:value="${child.childID}" />
+						<input type="hidden" id="registrationDate" name="registrationDate" />
+				<div class="m-3">
+					<div class="form-group row custom-select-container">			
+						<label class="col-4 col-form-label label-width">Activity:</label>
+						<div class="col-7">
+							<select id="activityID" name="activityID" class="form-control custom-select"
+								onchange="toggleFields()">
+								<option value="ACRO">Acro</option>
+								<option value="BALLET">Ballet</option>
+								<option value="GYMNASTICS">Gymnastics</option>
+								<option value="HIPHOP">HipHop</option>
+								<option value="JAZZ">Jazz</option>
+								<option value="MODERN">Modern</option>
+								<option value="POINTE">Pointe</option>
+								<option value="TAP">Tap</option>
+							</select>
+							<div class="select-arrow3">&#9660;</div>
+						</div>
+					</div>
+					<div class="form-group row custom-select-container">
+						<label class="col-4 col-form-label label-width">Activity Level:</label>
+						<div class="col-7">
+							<select id="activityLevel" name="activityLevel" class="form-control custom-select"
+								onchange="toggleFields()">
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+							<div class="select-arrow3">&#9660;</div>
+						</div>
+					</div>
+					<div class="form-group row custom-select-container">
+						<label class="col-4 col-form-label label-width">Studio:</label>
+						<div class="col-7">
+							<select id="studioID" name="studioID" class="form-control custom-select"
+								onchange="toggleFields()">
+								<option value="1">Slippery Rock</option>
+								<option value="2">Grove City</option>
+								<option value="3">Sharon</option>
+								<option value="4">Mercer</option>
+							</select>
+							<div class="select-arrow3">&#9660;</div>
+						</div>
+					</div>
+					<br>
+					<p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+					<p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+					<div class="d-grid col-8 mx-auto">
+						<input type="submit" value="Submit Assignment" class="btn btn-info btn-sm" /><br>
+						<a th:href="@{/dashboards}" class="btn btn-secondary btn-sm btn-block">Back to Dashboard</a>
+					</div>
+			</form>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,18 @@
+//alexis sutch
+
+@startuml
+start
+:Log in as Instructor;
+:Access Instructor Dashboard;
+:See Associated Activities;
+
+if (View Schedule?) then (yes)
+	:Access Studio Schedule;
+endif
+if (View Class List?) then (yes)
+	:Access Class List;
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Export Page</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+
+		.btn {
+			width: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Choose Files to Export</h2>
+		<br>
+		<div class="d-grid gap-2 col-10 mx-auto justify-content-center">
+			<form action="/export/instructorData" method="post">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button class="btn btn-info" type="submit">Export Instructor Data to Excel</button>
+			</form>
+			<form action="/export/chargesData" method="post">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button class="btn btn-info" type="submit">Export Charges Data to Excel</button>
+			</form>
+			<form action="/export/parentChildData" method="post">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button class="btn btn-info" type="submit">Export Parent/Child Data to Excel</button>
+			</form>
+			<form action="/export/activityData" method="post">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button class="btn btn-info" type="submit">Export Activity Data to Excel</button>
+			</form>
+			<a th:href="@{/dashboards}" class="btn btn-secondary">Back to Dashboard</a>
+		</div>
+	</div>
+	</div>
+</body>

@@ -1,0 +1,15 @@
+
+@startuml
+class ExportController {
+    - exportService : ExportDataService
+
+    + exportData() : String
+    + exportInstructorData() : String
+}
+
+class ExportDataService {
+}
+
+ExportController --> "1" ExportDataService : uses
+
+@enduml

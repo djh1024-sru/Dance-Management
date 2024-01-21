@@ -1,0 +1,19 @@
+
+@startuml
+class AssignChildController {
+    - childRepository : ChildRepository
+    - childService : ChildService
+
+    + {method signatures for handling web requests}
+}
+
+class ChildRepository {
+}
+
+class ChildService {
+}
+
+AssignChildController --> "1" ChildRepository : uses
+AssignChildController --> "1" ChildService : uses
+
+@enduml

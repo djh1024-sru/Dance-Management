@@ -1,0 +1,47 @@
+:root {
+	--first-color: rgb(158, 202, 216);
+	--second-color: rgb(238, 235, 235);
+}
+
+.centerContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -45%);
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	padding: 50px;
+	background-color: var(--second-color);
+}
+
+.location {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -45%);
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	padding: 50px;
+}
+
+.users {
+	text-align: center;
+}
+
+h1 {
+	font-size: 30;
+	color: var(--first-color);
+	text-align: center;
+}
+
+h4 {
+	text-align: center;
+}
+
+h3 {
+	font-size: 12px;
+	text-align: center;
+}
+
+.btn-info {
+	background-color: var(--first-color);
+	border-color: var(--first-color);
+}

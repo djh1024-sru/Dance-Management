@@ -1,0 +1,36 @@
+
+@startuml
+class DisplayServicesImpl {
+    - locationRepository : LocationRepository
+    - instructorRepository : InstructorRepository
+    - childRepository : ChildRepository
+    - parentRepository : ParentRepository
+
+    + getAllLocs() : List<Location>
+    + getAllInstructs() : List<Instructor>
+    + getAllChildren() : List<Children>
+    + getParentBalance() : List<Parent>
+}
+
+interface DisplayService {
+}
+
+class LocationRepository {
+}
+
+class InstructorRepository {
+}
+
+class ChildRepository {
+}
+
+class ParentRepository {
+}
+
+DisplayServicesImpl -up-|> DisplayService : implements
+DisplayServicesImpl --> "1" LocationRepository : uses
+DisplayServicesImpl --> "1" InstructorRepository : uses
+DisplayServicesImpl --> "1" ChildRepository : uses
+DisplayServicesImpl --> "1" ParentRepository : uses
+
+@enduml

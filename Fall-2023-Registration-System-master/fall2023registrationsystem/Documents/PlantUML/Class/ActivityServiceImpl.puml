@@ -1,0 +1,27 @@
+
+@startuml
+class ActivityServiceImpl {
+    - actRepo : ActivitiesRepository
+    - instructorRepo : InstructorRepository
+    - locationName : String
+
+    + getActivities() : List<Activities>
+    + getActsByLocation(locationName : String) : List<Activities>
+    + findActivitiesByInstructorID(instructorID : Integer) : List<Activities>
+    + findInstructorByEmail(email : String) : Instructor
+}
+
+interface ActivityService {
+}
+
+class ActivitiesRepository {
+}
+
+class InstructorRepository {
+}
+
+ActivityServiceImpl --> "1" ActivityService : implements
+ActivityServiceImpl --> "1" ActivitiesRepository : uses
+ActivityServiceImpl --> "1" InstructorRepository : uses
+
+@enduml

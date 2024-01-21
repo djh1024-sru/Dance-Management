@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Child Activities</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+		h3 {
+			color: rgb(128, 138, 141);
+			text-align: center;
+			font-size: 20px;
+		}
+		h2 {
+			font-size: 30px;
+			color: rgb(80, 138, 158);
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+
+	<div class="container mt-4">
+		 <div th:if="${children.size() > 0}">
+            <h2>Activities for <span th:text="${children[0].firstName + ' ' + children[0].lastName}"></span></h2>
+            <h3>Birth Date: <span th:text="${children[0].birthDate}"></span></h3>
+            <h3>Age: <span th:text="${children[0].age}"></span></h3>
+        </div>
+        <br>
+        
+		<div>
+            <table class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Activity Name</th>
+                        <th>Class Level</th>
+                        <th>Studio Location</th>
+                        <th>Registration Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="child : ${children}">
+                        <td th:text="${child.activityID}"></td>
+                        <td th:text="${child.activityLevel}"></td>
+                        <td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+                        <td th:text="${child.registrationDate}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

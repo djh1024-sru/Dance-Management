@@ -1,0 +1,27 @@
+
+@startuml
+interface DisplayService {
+    + getAllLocs() : List<Location>
+    + getAllInstructs() : List<Instructor>
+    + getAllChildren() : List<Children>
+    + getParentBalance() : List<Parent>
+}
+
+class Location {
+}
+
+class Instructor {
+}
+
+class Children {
+}
+
+class Parent {
+}
+
+DisplayService ..> Location : uses
+DisplayService ..> Instructor : uses
+DisplayService ..> Children : uses
+DisplayService ..> Parent : uses
+
+@enduml
