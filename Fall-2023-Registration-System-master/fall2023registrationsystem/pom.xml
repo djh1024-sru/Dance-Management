@@ -12,7 +12,6 @@
 	</parent>
 	<groupId>edu.sru.smb1048.group2</groupId>
 	<artifactId>fall2023registrationsystem</artifactId>
-	<version>3.1.3</version>
 	<name>fall2023registrationsystem</name>
 	<description>cpsc488-01 Project</description>
 	<properties>
@@ -122,9 +121,6 @@
 			<version>1.6.4</version>
 		</dependency>
 
-
-		
-
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
@@ -173,5 +169,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
