@@ -1,0 +1,14 @@
+
+@startuml
+interface ActivitiesRepository {
+    + findBySheetIndex(sheetIndex : int) : List<Activities>
+    + findActivitiesByLocationName(locationName : String) : List<Activities>
+    + findByInstructorID(instructorID : Integer) : List<Activities>
+}
+
+class Activities {
+}
+
+ActivitiesRepository ..> Activities : queries
+
+@enduml

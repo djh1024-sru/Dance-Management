@@ -1,0 +1,17 @@
+
+@startuml
+class Instructor {
+    - instructorID : Integer
+    - lastName : String
+    - firstName : String
+    - email : String
+    - instructorPhoneNum : String
+    - specialty : String
+    - studioA : String
+    - studioB : String
+    - password : String
+    - role : String
+
+}
+
+@enduml

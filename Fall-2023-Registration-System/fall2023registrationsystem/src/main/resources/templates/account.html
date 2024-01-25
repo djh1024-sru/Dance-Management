@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Account Information</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<script>
+		function submitForm() {
+			document.getElementById('updateAccountForm').submit();
+		}
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h1>Account Information</h1>
+
+		<!-- Display current account information -->
+		<form id="updateAccountForm" action="/updateAccount" method="post">
+			<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+
+			<div class="form-group">
+				<label>First Name:</label>
+				<input type="text" name="firstName" class="form-control" th:value="${user.firstName}" required>
+			</div>
+
+			<div class="form-group">
+				<label>Last Name:</label>
+				<input type="text" name="lastName" class="form-control" th:value="${user.lastName}" required>
+			</div>
+
+			<div class="form-group">
+				<label>Email:</label>
+				<input type="email" name="email" class="form-control" th:value="${user.email}" required>
+			</div>
+			<br>
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<a th:href="@{/updateAccount}" class="btn btn-info btn-sm" onclick="submitForm()">Update Information</a>
+			</div>
+		</form>
+
+		<br>
+		<h1>Change Password</h1>
+
+		<!-- Form to change password -->
+		<form action="/changePassword" method="post">
+			<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+
+			<div class="form-group">
+				<label>Old Password:</label>
+				<input type="password" name="oldPassword" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label>New Password:</label>
+				<input type="password" name="newPassword" class="form-control" required>
+			</div>
+			<br>
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<input type="submit" value="Change Password" class="btn btn-info btn-sm">
+
+		</form>
+
+		<a th:href="@{/dashboards}" class="btn btn-secondary btn-sm">Back to Dashboard</a>
+	</div>
+	</div>
+</body>
+
+</html>

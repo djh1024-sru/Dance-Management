@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Export Page</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+
+		.btn {
+			width: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<div class="d-grid gap-2 col-10 mx-auto justify-content-center">
+			<h2>File Options</h2>
+					<div class="d-grid gap-2 justify-content-center">
+						<a class="btn btn-info" th:href="@{/uploadActivity}">Upload Activity Sheet</a>
+						<a class="btn btn-info" th:href="@{/uploadInstructor}">Upload Instructor Sheet</a>
+						<a class="btn btn-info" th:href="@{/uploadCharges}">Upload Charges Sheet</a>
+						<a class="btn btn-info" th:href="@{/uploadParentChild}">Upload Parent/Child Sheet</a>
+						<a class="btn btn-info" th:href="@{/manager/managerExport}">Chooses Files to Export</a>
+					</div>
+			<a th:href="@{/dashboards}" class="btn btn-secondary">Back to Dashboard</a>
+		</div>
+	</div>
+	</div>
+</body>

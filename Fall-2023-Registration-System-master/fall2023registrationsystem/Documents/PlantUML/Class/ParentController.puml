@@ -1,0 +1,7 @@
+@startuml
+class ParentController {
+    - ChildRepository childRepository
+    - ParentService parentService
+    - UserService userService
+}
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+actor Parent
+participant "ChildController" as CC
+entity "ChildService" as CS
+database "ChildRepository" as CR
+entity "ActivityService" as AS
+database "ActivitiesRepository" as AR
+
+Parent -> CC : enrollChildInActivity(childId, activityId)
+CC -> CS : enrollChild(childId, activityId)
+CS -> CR : findChildById(childId)
+CR --> CS : childDetails
+CS -> AS : findActivityById(activityId)
+AS -> AR : findById(activityId)
+AR --> AS : activityDetails
+AS --> CS : enrollChildInActivity(childDetails, activityDetails)
+CS --> CC : enrollmentConfirmation
+CC --> Parent : displayEnrollmentConfirmation()
+@enduml

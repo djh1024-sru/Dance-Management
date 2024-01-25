@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Edit Activities</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/dropDownArrow.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		.label-width {
+			width: 140px;
+		}
+
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+	<script>
+		function updateEndTime() {
+	        var activityLevel = document.getElementById('activityLevel').value;
+	        var startTime = document.getElementById('startTime').value;
+	        var startTimeParts = startTime.split(':');
+	        var startTimeObj = new Date();
+	        startTimeObj.setHours(parseInt(startTimeParts[0], 10));
+	        startTimeObj.setMinutes(parseInt(startTimeParts[1], 10));
+	
+	        if (activityLevel === '1') {
+	            startTimeObj.setMinutes(startTimeObj.getMinutes() + 30);
+	        } else if (activityLevel === '2') {
+	            startTimeObj.setMinutes(startTimeObj.getMinutes() + 45);
+	        } else if (activityLevel === '3') {
+	            startTimeObj.setHours(startTimeObj.getHours() + 1);
+	        }
+	
+	        var formattedEndTime = ('0' + startTimeObj.getHours()).slice(-2) + ':' +
+	                                ('0' + startTimeObj.getMinutes()).slice(-2);
+	
+	        document.getElementById('endTime').value = formattedEndTime;
+	    }
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h3>Update <span th:text="${activity.locationName} + ' ' + ${activity.activityID}"></span></h3>
+		<form th:action="@{/updateActivity}" method="post" style="max-width: 350px; margin: 0 auto;"><br>
+			<input type="hidden" name="activityID" th:value="${activity.activityID}" />
+			<input type="hidden" name="instructorID" th:value="${activity.instructorID}" />
+			<input type="hidden" name="locationName" th:value="${activity.locationName}" />
+
+			<div class="form-group row">
+				<label class="col-5 col-form-label label-width">Start Time:</label>
+				<div class="col-7">
+                	<input type="time" id="startTime" name="startTime" th:value="${activity.startTime}" min="09:00" max="20:30" />
+            	</div>
+
+				<div class="form-group row">
+                <label class="col-5 col-form-label label-width">Activity Level:</label>
+                <div class="col-7">
+                    <select id="activityLevel" name="activityLevel" th:onchange="updateEndTime()">
+                        <option th:selected="${activity.activityLevel == 1}" value="1">Beginner</option>
+            			<option th:selected="${activity.activityLevel == 2}" value="2">Intermediate</option>
+						<option th:selected="${activity.activityLevel == 3}" value="3">Advanced</option>
+					</select>
+                </div>
+            </div>
+
+				<label class="col-5 col-form-label label-width">End Time:</label>
+				<div class="col-7">
+                	<input type="time" id="endTime" name="endTime" th:value="${activity.endTime}" min="09:30" max="21:00" readonly />
+				</div>
+
+				<label class="col-5 col-form-label label-width">Weekday:</label>
+				<div class="col-7">
+					<select id="weekday" name="weekDay" th:field="*{activity.weekDay}">
+						<option th:each="day : ${T(java.time.DayOfWeek).values()}"
+							th:unless="${day == T(java.time.DayOfWeek).SUNDAY}" th:value="${day}"
+							th:text="${#strings.capitalize(day.toString().toLowerCase())}">
+						</option>
+					</select>
+				</div>
+				<p class="text-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+				<div class="d-grid col-6 mx-auto">
+					<br><input type="submit" value="Update Activity" class="btn btn-info btn-sm btn-block" /><br>
+					<a th:href="@{/manager/schedule}" class="btn btn-secondary btn-sm btn-block">Back to Schedule</a>
+				</div>
+		</form>
+
+</body>
+
+</html>

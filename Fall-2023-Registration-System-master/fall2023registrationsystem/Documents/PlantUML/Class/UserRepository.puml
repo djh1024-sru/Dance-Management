@@ -1,0 +1,6 @@
+@startuml
+interface UserRepository {
+    +findByEmail()
+    +existsByEmail()
+}
+@enduml

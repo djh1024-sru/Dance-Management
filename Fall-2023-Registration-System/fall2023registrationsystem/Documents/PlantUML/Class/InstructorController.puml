@@ -1,0 +1,8 @@
+
+@startuml
+class InstructorController {
+
+    + instructorDashboard() : String
+}
+
+@enduml

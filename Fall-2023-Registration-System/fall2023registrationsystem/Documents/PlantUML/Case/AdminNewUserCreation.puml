@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor "Admin" as A
+
+rectangle "Create New User" {
+	(Select Create New User) as UC1
+	(Back to Dashboard) as UC6
+	(Select Admin Role) as UC2
+	(Select Manager Role) as UC7
+	(Enter First/Last Name + Email/Phone# + Password) as UC8
+	(Submit Form) as UC9
+	(Creation Success Page) as UC10
+
+A --> UC1
+UC1 --> UC7
+UC1 --> UC2
+UC1 --> UC6
+
+UC7 --> UC8
+UC2 --> UC8
+UC8 --> UC9
+UC9 --> UC10
+UC10 --> UC6
+
+}
+
+@enduml

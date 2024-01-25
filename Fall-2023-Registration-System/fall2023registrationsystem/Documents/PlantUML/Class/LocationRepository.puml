@@ -1,0 +1,11 @@
+
+@startuml
+interface LocationRepository {
+}
+
+class Location {
+}
+
+LocationRepository ..> Location : queries
+
+@enduml

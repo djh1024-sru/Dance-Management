@@ -1,0 +1,40 @@
+//alexis sutch
+
+@startuml
+left to right direction
+actor "Manager" as M
+rectangle "Class Lists" {
+  (Access Class List) as UC1
+  (Assign Child to Activity) as UC2
+  (Delete Child from Activity) as UC3
+  (Select Child from Dropdown) as UC4
+  (Select ActivityID) as UC5
+  (Select ActivityLevel) as UC6 
+  (Select Location) as UC7
+  (Child Already Enrolled in Class) as UC8
+  (View Students Enrolled) as UC9
+  (Click Delete Button) as UC10
+  (Child Deleted Successfully) as UC11
+  (Child Enrolled Successfully) as UC12
+  (Check If Entry Exists) as UC13
+  (Return to Class List) as UC14
+}
+
+M -- UC1
+UC1 --> UC9
+UC1 --> UC3
+UC1 --> UC2
+UC2 --> UC4
+UC4 --> UC5
+UC4 --> UC6
+UC4 --> UC7
+UC3 --> UC10
+UC10 --> UC11
+UC5 --> UC13 
+UC6 --> UC13
+UC7 --> UC13
+UC13 --> UC12 : Entry does not exist
+UC13 --> UC8 : Entry already exists
+UC8 --> UC4
+UC12 --> UC14
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class Transactions {
+    -transactionID : Integer
+    -amount : Float
+    -paymentType : String
+    -checkNumber : String
+    -transactionTime : LocalDateTime
+    -parent : Parent
+    +getTransactionID()
+    +setTransactionID(Integer)
+    +getAmount()
+    +setAmount(Float)
+    +getPaymentType()
+    +setPaymentType(String)
+    +getCheckNumber()
+    +setCheckNumber(String)
+    +getTransactionTime()
+    +setTransactionTime(LocalDateTime)
+    +getParent()
+    +setParent(Parent)
+}
+
+Transactions "1" -- "1" Parent
+@enduml

@@ -1,0 +1,81 @@
+:root {
+	--fc-small-font-size: .85em;
+	--fc-page-bg-color: #fff;
+	--fc-neutral-bg-color: rgba(238, 235, 235, 0.3);
+	--fc-neutral-text-color: #808080;
+	--fc-border-color: #ddd;
+
+	--fc-button-text-color: #fff;
+	--fc-button-bg-color: #6c757d;
+	--fc-button-border-color: #6c757d;
+	--fc-button-hover-bg-color: #5A6066;
+	--fc-button-hover-border-color: #5A6066;
+	--fc-button-active-bg-color: #5A6066;
+	--fc-button-active-border-color: #5A6066;
+
+	--fc-event-bg-color: #3788d8;
+	--fc-event-border-color: #3788d8;
+	--fc-event-text-color: #fff;
+	--fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+	--fc-more-link-bg-color: #d0d0d0;
+	--fc-more-link-text-color: inherit;
+
+	--fc-event-resizer-thickness: 8px;
+	--fc-event-resizer-dot-total-width: 8px;
+	--fc-event-resizer-dot-border-width: 1px;
+
+	--fc-non-business-color: rgba(215, 215, 215, 0.3);
+	--fc-bg-event-color: rgb(143, 223, 130);
+	--fc-bg-event-opacity: 0.3;
+	--fc-highlight-color: rgba(188, 232, 241, 0.3);
+	--fc-today-bg-color: #EEFFEA;
+	--fc-now-indicator-color: red;
+}
+
+.fc {
+	& .fc-daygrid-day-number {
+		text-decoration: none;
+		color: #6592A8;
+	}
+
+	& .fc-col-header-cell-cushion {
+		text-decoration: none;
+		color: #6592A8;
+	}
+
+}
+
+.container-fluid {
+	padding: 30px;
+}
+
+.dashboard-container {
+	border: 5px solid rgb(158, 202, 216);
+	padding: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.btn-info {
+	background-color: rgb(158, 202, 216);
+	border-color: rgb(158, 202, 216);
+}
+
+.btn {
+	width: 400px;
+}
+
+#calendar {
+	margin-top: 20px;
+	border: 5px solid rgb(158, 202, 216);
+	padding: 20px;
+	height: 90%;
+}
+
+.dashboard-containerAdmin {
+	border: 5px solid rgb(215, 215, 215);
+	padding: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}

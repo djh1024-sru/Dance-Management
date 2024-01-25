@@ -1,0 +1,50 @@
+
+@startuml
+class ExportDataService {
+
+    + exportAMLDataToExcel() : void
+    + exportInstructorDataToExcel() : void
+}
+
+class Workbook {
+}
+
+class Sheet {
+}
+
+class Row {
+}
+
+class Cell {
+}
+
+class Activities {
+}
+
+class Admin {
+}
+
+class Charges {
+}
+
+class Children {
+}
+
+class Instructor {
+}
+
+class Location {
+}
+
+ExportDataService --> "1" Workbook : uses
+ExportDataService --> "1" Sheet : uses
+ExportDataService --> "1" Row : uses
+ExportDataService --> "1" Cell : uses
+ExportDataService --> "1" Activities : operates on
+ExportDataService --> "1" Admin : operates on
+ExportDataService --> "1" Charges : operates on
+ExportDataService --> "1" Children : operates on
+ExportDataService --> "1" Instructor : operates on
+ExportDataService --> "1" Location : operates on
+
+@enduml

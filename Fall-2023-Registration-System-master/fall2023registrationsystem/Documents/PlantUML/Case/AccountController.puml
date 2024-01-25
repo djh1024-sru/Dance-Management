@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor "User" as U
+rectangle "Account Controller" {
+  (View Account Details) as UC1
+  (Show Change Password Form) as UC2
+  (Update User Account Details) as UC3
+  (Change Password) as UC4
+  (isFirstLogon = true) as UC5
+  (isFirstLogon = false) as UC6
+  (Successful Logon) as UC7
+}
+U -- UC5
+UC5 --> UC2
+UC4 --> UC7
+UC2 --> UC4
+UC1 --> UC3
+U -- UC6
+UC6 --> UC1
+UC6 --> UC7
+
+@enduml

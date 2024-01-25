@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Upload Excel File</title>
+    <link th:href="@{/centerContainer.css}" rel="stylesheet" />
+    <link th:href="@{/header.css}" rel="stylesheet" />
+    <link th:href="@{/general.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        .btn-primary {
+            background-color: rgb(158, 202, 216);
+            border-color: rgb(158, 202, 216);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+        <div class="header-right">
+            <a th:href="@{/dashboards}">Home</a>
+            <a th:href="@{/account}">Account</a>
+            <a th:href="@{/logout}">Sign Out</a>
+        </div>
+    </div>
+
+    <div class="centerContainer">
+        <h2>Upload Excel File</h2><br>
+        <form method="POST" action="/uploadExcel" enctype="multipart/form-data">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <p>Select Excel file to upload:</p>
+                <input type="file" class="form-control-file" id="fileUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+        </form>
+        <a th:href="@{/dashboards}" class="btn btn-secondary btn-sm btn-block">Back to Dashboard</a>
+    </div>
+</body>
+</html>

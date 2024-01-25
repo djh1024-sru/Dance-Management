@@ -1,0 +1,42 @@
+@startuml
+
+start
+:Access Class List;
+if (Select Child from Dropdown?) then (yes)
+  :Select Child from Dropdown;
+  if (Select ActivityID?) then (yes)
+    :Select ActivityID;
+    if (Select ActivityLevel?) then (yes)
+      :Select ActivityLevel;
+      if (Select Location?) then (yes)
+        :Select Location;
+        if (Check If Entry Exists?) then (yes)
+          :Child Already Enrolled in Class;
+          :Return to Class List;
+        else (no)
+          :Assign Child to Activity;
+          :Child Enrolled Successfully;
+          :Return to Class List;
+        endif
+      else (no)
+        stop
+      endif
+    else (no)
+      stop
+    endif
+  else (no)
+    stop
+  endif
+else (no)
+  if (Delete Child from Activity?) then (yes)
+    :Click Delete Button;
+    :Child Deleted Successfully;
+    :Return to Class List;
+  else (no)
+    :View Students Enrolled;
+    stop
+  endif
+endif
+
+stop
+@enduml

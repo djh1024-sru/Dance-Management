@@ -1,0 +1,14 @@
+
+@startuml
+interface ManagerRepository {
+    + findByEmail(email : String) : Manager
+    + existsByEmail(email : String) : boolean
+    + deleteByEmail(email : String) : void
+}
+
+class Manager {
+}
+
+ManagerRepository ..> Manager : queries
+
+@enduml

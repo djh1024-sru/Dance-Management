@@ -1,0 +1,17 @@
+//alexis sutch
+
+@startuml
+left to right direction
+actor "Instructor" as I
+rectangle "Instructor Interaction System" {
+  (Access Dashboard) as UC1
+  (See Studio Schedule) as UC2
+  (See Class Lists) as UC3
+  (See Associated Activities) as UC4
+}
+
+I -- UC1
+I -- UC2
+I -- UC3
+I -- UC4
+@enduml

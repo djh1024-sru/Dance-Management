@@ -1,0 +1,59 @@
+//alexis sutch
+
+@startuml
+start
+:Log in as Manager;
+:Access Manager Dashboard;
+
+if (Create Instructor/Parent?) then (yes)
+    :Access Create User Page;
+    :Enter User Details;
+    :Confirm User Creation;
+else (no)
+	:Return to Dashboard;
+endif
+
+if (Register New Child?) then (yes)
+    :Enter Child Details;
+    :Assign Child to Parent;
+    :Confirm Creation;
+else (no)
+	:Return to Dashboard;
+endif
+
+if (Check Parent Balance?) then (yes)
+    :Access Parent Balance Page;
+    if (Make Payment?) then (yes)
+        :Enter Payment Amount;
+        :Enter Payment Type;
+    else (no)
+    :Return to Dashboard;
+    endif
+endif
+
+if (View Schedule?) then (yes)
+    :Access Studio Schedule;
+    if (Edit Activity?) then (yes)
+        :Enter New Start/End Time;
+        :Enter New Weekday;
+    endif
+    if (Delete Activity?) then (yes)
+        :Confirm Delete;
+    else (no)
+    :Return to Dashboard;
+    endif
+endif
+
+if (View Class Lists?) then (yes)
+    :Access Class Lists;
+    if (Assign Child?) then (yes)
+        :Choose Class Details;
+        :Submit;
+    else (no)
+    :Return to Dashboard;
+    endif
+endif
+
+:Logout as Manager;
+stop
+@enduml

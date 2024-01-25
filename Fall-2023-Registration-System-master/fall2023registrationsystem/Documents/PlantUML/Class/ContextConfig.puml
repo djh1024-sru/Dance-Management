@@ -1,0 +1,18 @@
+
+@startuml
+class ContextConfig {
+
+    + httpClient() : CloseableHttpClient
+    + requestConfig() : RequestConfig
+}
+
+class CloseableHttpClient {
+}
+
+class RequestConfig {
+}
+
+ContextConfig --> "1" CloseableHttpClient : creates
+ContextConfig --> "1" RequestConfig : creates
+
+@enduml

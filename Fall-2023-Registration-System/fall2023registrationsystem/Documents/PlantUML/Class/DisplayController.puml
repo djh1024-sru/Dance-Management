@@ -1,0 +1,34 @@
+
+@startuml
+class DisplayController {
+    - activitiesRepository : ActivitiesRepository
+    - childRepository : ChildRepository
+    - instructorRepository : InstructorRepository
+    - locationRepository : LocationRepository
+    - parentRepository : ParentRepository
+
+    + {method signatures for handling web requests}
+}
+
+class ActivitiesRepository {
+}
+
+class ChildRepository {
+}
+
+class InstructorRepository {
+}
+
+class LocationRepository {
+}
+
+class ParentRepository {
+}
+
+DisplayController --> "1" ActivitiesRepository : uses
+DisplayController --> "1" ChildRepository : uses
+DisplayController --> "1" InstructorRepository : uses
+DisplayController --> "1" LocationRepository : uses
+DisplayController --> "1" ParentRepository : uses
+
+@enduml

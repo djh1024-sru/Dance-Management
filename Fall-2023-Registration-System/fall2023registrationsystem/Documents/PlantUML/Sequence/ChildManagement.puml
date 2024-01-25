@@ -1,0 +1,13 @@
+@startuml
+actor Parent
+participant "ParentController" as PC
+entity "ChildService" as CS
+database "ChildRepository" as CR
+
+Parent -> PC : manageChildAccount(childId)
+PC -> CS : getChildDetails(childId)
+CS -> CR : findById(childId)
+CR --> CS : childDetails
+CS --> PC : childAccountDetails
+PC --> Parent : displayChildAccountDetails(childDetails)
+@enduml

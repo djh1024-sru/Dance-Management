@@ -1,0 +1,14 @@
+
+@startuml
+interface ChildRepository {
+    + findDistinctByChildID(childID : int) : List<Children>
+    + findByParentID(parentID : Integer) : List<Children>
+    + findByChildID(childID : Integer) : List<Children>
+}
+
+class Children {
+}
+
+ChildRepository ..> Children : queries
+
+@enduml

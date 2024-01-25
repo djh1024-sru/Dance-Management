@@ -1,0 +1,24 @@
+
+@startuml
+class AdminConfig {
+    - adminRepository : AdminRepository
+    - userRepository : UserRepository
+    - passwordEncoder : BCryptPasswordEncoder
+
+    + AdminConfig(adminRepository : AdminRepository, passwordEncoder : BCryptPasswordEncoder, userRepository : UserRepository)
+}
+
+class AdminRepository {
+}
+
+class UserRepository {
+}
+
+class BCryptPasswordEncoder {
+}
+
+AdminConfig --> "1" AdminRepository : uses
+AdminConfig --> "1" UserRepository : uses
+AdminConfig --> "1" BCryptPasswordEncoder : uses
+
+@enduml

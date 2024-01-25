@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant "AccountController" as AC
+database "UserRepository" as UR
+entity "UserService" as US
+
+User -> AC : register(username, password)
+AC -> US : createUser(username, password)
+US -> UR : save(newUser)
+UR --> US : userSaved
+US --> AC : userCreated
+AC --> User : registrationConfirmation
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+start
+:Log in as Admin;
+:Access admin dashboard;
+if (Create new user?) then (yes)
+  :Access create user page;
+  :Enter user details;
+  :Confirm user creation;
+endif
+if (Delete existing user?) then (yes)
+  :Select user to delete;
+  :Confirm deletion request;
+  :Delete user;
+  :Confirm user deletion;
+endif
+if (Reset user password?) then (yes)
+  :Select user for password reset;
+  :Reset password;
+  :Confirm password reset;
+endif
+:Log out as Admin;
+stop
+@enduml

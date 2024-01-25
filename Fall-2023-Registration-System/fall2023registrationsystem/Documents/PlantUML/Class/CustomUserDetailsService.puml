@@ -1,0 +1,41 @@
+
+@startuml
+class CustomUserDetailsService {
+    - userRepository : UserRepository
+    - adminRepository : AdminRepository
+    - instructorRepository : InstructorRepository
+    - managerRepository : ManagerRepository
+    - parentRepository : ParentRepository
+
+    + loadUserByUsername(username : String) : UserDetails
+}
+
+interface UserDetailsService {
+}
+
+class UserRepository {
+}
+
+class AdminRepository {
+}
+
+class InstructorRepository {
+}
+
+class ManagerRepository {
+}
+
+class ParentRepository {
+}
+
+class UserDetails {
+}
+
+CustomUserDetailsService -up-|> UserDetailsService : implements
+CustomUserDetailsService --> "1" UserRepository : uses
+CustomUserDetailsService --> "1" AdminRepository : uses
+CustomUserDetailsService --> "1" InstructorRepository : uses
+CustomUserDetailsService --> "1" ManagerRepository : uses
+CustomUserDetailsService --> "1" ParentRepository : uses
+
+@enduml

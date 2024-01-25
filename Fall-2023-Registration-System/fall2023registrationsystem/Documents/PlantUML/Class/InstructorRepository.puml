@@ -1,0 +1,15 @@
+
+@startuml
+interface InstructorRepository {
+    + findByEmail(email : String) : Instructor
+    + existsByEmail(email : String) : boolean
+    + deleteByEmail(email : String) : void
+    + findMaxInstructorID() : Integer
+}
+
+class Instructor {
+}
+
+InstructorRepository ..> Instructor : queries
+
+@enduml

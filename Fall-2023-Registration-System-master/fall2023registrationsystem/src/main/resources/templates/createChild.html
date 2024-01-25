@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Create New Child</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/dropDownArrow.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+		.label-width {
+			width: 140px;
+		}
+	</style>
+	<script>
+		function toggleFields() {
+			const grade = document.getElementById("grade").value;
+			const gradeLevelFields = document.querySelectorAll('[data-grade-level-field]');
+
+			gradeLevelFields.forEach(field => {
+				field.style.display = "none";
+			});
+
+			document.querySelectorAll(`[data-grade-level-field=${grade}]`).forEach(field => {
+				field.style.display = "block";
+			});
+		}
+
+		function calculateAge() {
+			const birthDate = new Date(document.getElementById("birthDate").value);
+			const today = new Date();
+
+			if (birthDate > today) {
+				alert("Please enter a valid birthdate");
+				document.getElementById("birthDate").value = ''; // Clear the input field
+				return;
+			}
+
+			const diffInMilliseconds = Math.abs(today - birthDate);
+			const age = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 365.25)); // Approximate calculation
+
+			if (age < 2) {
+				alert("Please enter a birthdate for a child of 2 years or older");
+				document.getElementById("birthDate").value = ''; // Clear the input field
+				return;
+			}
+
+			document.getElementById("age").value = age;
+		}
+
+		function validate(e) {
+			e.preventDefault();
+			const grade = document.getElementById("grade").value;
+			const gradeLevelFields = document.querySelectorAll(`[data-grade-level-field=${grade}]`);
+			const birthDate = document.getElementById("birthDate").value;
+			const age = document.getElementById("age").value;
+
+			let allFieldsEntered = true;
+
+			gradeLevelFields.forEach(field => {
+				if (field.value === "") {
+					allFieldsEntered = false;
+				}
+			});
+
+			if (allFieldsEntered) {
+				e.target.submit();
+			} else {
+				alert("Please fill out all of the fields.");
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			toggleFields();
+			calculateAge();
+			document.getElementById("grade").addEventListener('change', toggleFields);
+			document.getElementById("birthDate").addEventListener('change', calculateAge);
+			document.querySelector('form').addEventListener('submit', validate);
+		});
+
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<div>
+			<h2>Create New Child</h2><br>
+		</div>
+
+		<div th:if="${error}">
+			<p th:text="${error}" style="color: red;"></p>
+		</div>
+
+		<form th:action="@{/manager/createChild}" th:object="${newChild}" method="post"
+			style="max-width: 600px; margin: 0 auto;">
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label label-width">Role:</label>
+				<div class="col-7">
+					<input type="text" value="CHILD" class="form-control" readonly />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label label-width">First Name:</label>
+				<div class="col-7">
+					<input type="text" th:field="*{firstName}" class="form-control" required />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label label-width">Last Name:</label>
+				<div class="col-7">
+					<input type="text" th:field="*{lastName}" class="form-control" required />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label label-width">Birth Date:</label>
+				<div class="col-7">
+					<input type="date" id="birthDate" th:field="*{birthDate}" class="form-control" required />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-4 col-form-label label-width">Child's Age:</label>
+				<div class="col-7">
+					<input type="text" id="age" th:field="*{age}" class="form-control" readonly />
+				</div>
+			</div>
+
+			<div class="form-group row custom-select-container">
+				<label class="col-4 col-form-label label-width">School Grade:</label>
+				<div class="col-7">
+					<select id="grade" name="grade" class="form-control custom-select" onchange="toggleFields()">
+						<option value="PRESCHOOL">Preschool</option>
+						<option value="KINDERGARTEN">Kindergarten</option>
+						<option value="GRADE-1">Grade 1</option>
+						<option value="GRADE-2">Grade 2</option>
+						<option value="GRADE-3">Grade 3</option>
+						<option value="GRADE-4">Grade 4</option>
+						<option value="GRADE-5">Grade 5</option>
+						<option value="GRADE-6">Grade 6</option>
+						<option value="GRADE-7">Grade 7</option>
+						<option value="GRADE-8">Grade 8</option>
+						<option value="GRADE-9">Grade 9</option>
+						<option value="GRADE-10">Grade 10</option>
+						<option value="GRADE-11">Grade 11</option>
+						<option value="GRADE-12">Grade 12</option>
+						<option value="NOT-ENROLLED">Not Enrolled in School</option>
+					</select>
+					<div class="select-arrow4">&#9660;</div>
+				</div>
+			</div>
+			<div class="form-group row custom-select-container">
+				<label class="col-4 col-form-label label-width">Select Parent:</label>
+				<div class="col-7">
+					<select th:field="*{parentID}" class="form-control custom-select">
+						<option th:each="parent : ${parents}" th:value="${parent.parentID}"
+							th:text="${parent.parent1Name}"></option>
+					</select>
+					<div class="select-arrow4">&#9660;</div>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="d-grid gap-2 col-7 mx-auto">
+				<button type="submit" class="btn btn-info">Enroll Child</button>
+				<a th:href="@{/dashboards}" class="btn btn-secondary">Back to Dashboard</a>
+			</div>
+	</div>
+	</form>
+	</div>
+</body>
+
+</html>

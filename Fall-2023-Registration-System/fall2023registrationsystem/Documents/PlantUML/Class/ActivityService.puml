@@ -1,0 +1,19 @@
+
+@startuml
+interface ActivityService {
+    + getActivities() : List<Activities>
+    + getActsByLocation(locationName : String) : List<Activities>
+    + findActivitiesByInstructorID(instructorID : Integer) : List<Activities>
+    + findInstructorByEmail(email : String) : Instructor
+}
+
+class Activities {
+}
+
+class Instructor {
+}
+
+ActivityService ..> Activities : uses
+ActivityService ..> Instructor : uses
+
+@enduml

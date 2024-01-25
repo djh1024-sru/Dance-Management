@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Submit Payment</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/dropDownArrow.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.label-width {
+			width: 150px;
+		}
+	</style>
+	<script>
+		function toggleFields() {
+			const paymentType = document.getElementById("paymentType").value;
+			const checkField = document.getElementById("checkField");
+			const cashField = document.getElementById("cashField");
+
+			checkField.style.display = "none";
+			cashField.style.display = "none";
+
+			if (paymentType === "CASH") {
+				cashField.style.display = "block";
+			} else if (paymentType === "CHECK") {
+				checkField.style.display = "block";
+			}
+
+			document.querySelectorAll('[data-role-field]').forEach(field => {
+				field.removeAttribute('name');
+			});
+
+			document.querySelectorAll(`[data-role-field=${paymentType}]`).forEach(field => {
+				field.setAttribute('name', field.getAttribute('data-name'));
+			});
+		}
+
+		function recordTransactionTime() {
+			const date = new Date().toISOString();
+			document.getElementById('transactionTime').value = date;
+		}
+
+		function validate(e) {
+			e.preventDefault();
+			const paymentType = document.getElementById("paymentType").value;
+			const paymentTypeFields = document.querySelectorAll(`[data-role-field=${paymentType}]`);
+			let allFieldsEntered = true;
+
+			paymentTypeFields.forEach(field => {
+				if (field.value === "") {
+					allFieldsEntered = false;
+				}
+			});
+			if (allFieldsEntered) {
+				recordTransactionTime();
+				e.target.submit();
+			} else {
+				alert("Please fill out all of the fields.");
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			toggleFields();
+			document.querySelector('#paymentForm').addEventListener('submit', validate);
+		});
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Input Parent Payment Here!</h2>
+		
+		<!--<h3>Input Payment</span></h3>
+		<form th:action="@{/parentProcessPayment}" method="post" id="paymentForm">
+
+			<div class="m-3">
+				<div class="form-group row">
+					<input type="hidden" name="parentID" th:value="${parent.parentID}" />
+					<label class="col-4 col-form-label label-width">Payment Type:</label>
+					<div class="col-7">
+						<select id="paymentType" name="paymentType" class="form-control custom-select"
+							onchange="toggleFields()">
+							<option value="CASH">Cash</option>
+							<option value="CHECK">Check</option>
+						</select>
+					</div>
+				</div>
+				<div id="cashField" style="display:block;">
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Amount:</label>
+						<div class="col-7">
+							<input type="text" data-name="amount" data-role-field="CASH" class="form-control"
+								placeholder="$" />
+						</div>
+					</div>
+				</div>
+
+				<div id="checkField" style="display:none;">
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Amount:</label>
+						<div class="col-7">
+							<input type="text" data-name="amount" data-role-field="CHECK" class="form-control"
+								placeholder="$" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-4 col-form-label label-width">Check Number:</label>
+						<div class="col-7">
+							<input type="text" data-role-field="CHECK" data-name="checkNumber" class="form-control"
+								placeholder="Check Number" />
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="d-grid col-8 mx-auto">
+					<input type="submit" value="Submit Payment" class="btn btn-info btn-sm" />
+				</div>
+
+		</form>-->
+	</div>
+</body>
+
+</html>

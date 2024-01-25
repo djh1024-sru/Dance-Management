@@ -1,0 +1,26 @@
+@startuml
+
+start
+:Select Create New User;
+if (Select Admin Role?) then (yes)
+  :Select Admin Role;
+  :Enter First/Last Name + Email/Phone# + Password;
+  if (Submit Form?) then (yes)
+    :Submit Form;
+    :Creation Success Page;
+  else (no)
+    :Back to Dashboard;
+  endif
+else (no)
+  :Select Manager Role;
+  :Enter First/Last Name + Email/Phone# + Password;
+  if (Submit Form?) then (yes)
+    :Submit Form;
+    :Creation Success Page;
+  else (no)
+    :Back to Dashboard;
+  endif
+endif
+:Back to Dashboard;
+stop
+@enduml

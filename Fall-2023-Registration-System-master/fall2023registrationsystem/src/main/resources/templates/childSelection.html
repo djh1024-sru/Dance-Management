@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Student Selection</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Select a Student</h2><br>
+		<form id="childForm" th:action="@{/childAssignment}" method="get">
+			<select id="childDropdown" name="childID" required>
+				<option value="">--please select a student--</option>
+
+				<th:block th:each="child : ${children}">
+					<th:block th:with="fullName=${child.firstName + ' ' + child.lastName}">
+						<option th:unless="${childNames.contains(fullName)}" th:value="${child.childID}"
+							th:text="${fullName}">
+						</option>
+						<th:block th:remove="tag" th:if="${childNames.add(fullName)}"></th:block>
+					</th:block>
+				</th:block>
+			</select><br><br>
+			<button type="submit" class="btn btn-info btn-sm">Assign Classes</button>
+		</form>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+@startuml
+class User {
+    -id : long
+    -email : String
+    -password : String
+    -firstName : String
+    -lastName : String
+    -firstLogin : Boolean
+    -role : String
+    +getId()
+    +setId(long)
+    +getEmail()
+    +setEmail(String)
+    +getPassword()
+    +setPassword(String)
+    +getFirstName()
+    +setFirstName(String)
+    +getLastName()
+    +setLastName(String)
+    +isFirstLogin()
+    +setFirstLogin(Boolean)
+    +getRole()
+    +setRole(String)
+}
+@enduml

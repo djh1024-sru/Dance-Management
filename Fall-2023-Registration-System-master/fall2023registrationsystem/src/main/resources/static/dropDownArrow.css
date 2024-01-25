@@ -1,0 +1,71 @@
+/* Style the custom select container */
+.custom-select-container {
+	position: relative;
+}
+
+/* Style the custom select */
+.custom-select {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+/* Style the select element to be transparent */
+.custom-select select {
+	width: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+/* Style the arrow inside the custom select */
+.select-arrow {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-90%) translateX(-80%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.select-arrow2 {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%) translateX(-120%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.select-arrow3 {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-45%) translateX(-170%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+.select-arrow4 {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%) translateX(-240%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* Style the select box and options */
+.custom-select select,
+.select-arrow {
+	padding: 2px;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+/* Style the options in the dropdown */
+.custom-select select option {
+	padding: 10px;
+}

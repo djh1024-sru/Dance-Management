@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Class Lists</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+
+	<div class="container mt-4">
+		<ul class="nav nav-tabs" id="classTabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="acro-tab" data-toggle="tab" href="#Acro" role="tab" aria-controls="acro"
+					aria-selected="true">Acro</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="ballet-tab" data-toggle="tab" href="#Ballet" role="tab" aria-controls="ballet"
+					aria-selected="false">Ballet</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="gymnastics-tab" data-toggle="tab" href="#Gymnastics" role="tab"
+					aria-controls="gymnastics" aria-selected="false">Gymnastics</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="hiphop-tab" data-toggle="tab" href="#HipHop" role="tab" aria-controls="hiphip"
+					aria-selected="false">Hip-Hop</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="jazz-tab" data-toggle="tab" href="#Jazz" role="tab" aria-controls="jazz"
+					aria-selected="false">Jazz</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="modern-tab" data-toggle="tab" href="#Modern" role="tab" aria-controls="modern"
+					aria-selected="false">Modern</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="pointe-tab" data-toggle="tab" href="#Pointe" role="tab" aria-controls="pointe"
+					aria-selected="false">Pointe</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="tap-tab" data-toggle="tab" href="#Tap" role="tab" aria-controls="tap"
+					aria-selected="false">Tap</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<!-- Acro Students -->
+			<div class="tab-pane fade show active" id="Acro" role="tabpanel" aria-labelledby="acro-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Acro' or child.activityID == 'ACRO'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Ballet Students -->
+			<div class="tab-pane fade" id="Ballet" role="tabpanel" aria-labelledby="ballet-tab">
+				<table class="table table-bordered table-striped mb-0">
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Ballet' or child.activityID == 'BALLET'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Gymnastics Students -->
+			<div class="tab-pane fade" id="Gymnastics" role="tabpanel" aria-labelledby="gymnastics-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Gymnastics' or child.activityID == 'GYMNASTICS'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- HipHop Students -->
+			<div class="tab-pane fade" id="HipHop" role="tabpanel" aria-labelledby="hiphop-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'HipHop' or child.activityID == 'HIPHOP'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Jazz Students -->
+			<div class="tab-pane fade" id="Jazz" role="tabpanel" aria-labelledby="jazz-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Jazz' or child.activityID == 'JAZZ'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Modern Students -->
+			<div class="tab-pane fade" id="Modern" role="tabpanel" aria-labelledby="modern-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Modern' or child.activityID == 'MODERN'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Pointe Students -->
+			<div class="tab-pane fade" id="Pointe" role="tabpanel" aria-labelledby="pointe-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Pointe' or child.activityID == 'POINTE'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Tap Students -->
+			<div class="tab-pane fade" id="Tap" role="tabpanel" aria-labelledby="tap-tab">
+				<table class="table table-bordered table-striped mb-0">
+
+					<thead>
+						<tr>
+							<th>Student ID</th>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Birth Date</th>
+							<th>Age</th>
+							<th>Class Level</th>
+							<th>Studio Location</th>
+							<th>Class Registration Date</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="child : ${children}"
+							th:if="${child.activityID == 'Tap' or child.activityID == 'TAP'}">
+							<td th:text="${child.childID}"></td>
+							<td th:text="${child.lastName}"></td>
+							<td th:text="${child.firstName}"></td>
+							<td th:text="${child.birthDate}"></td>
+							<td th:text="${child.age}"></td>
+							<td th:text="${child.activityLevel}"></td>
+							<td
+								th:text="${child.studioID == 1 ? 'Slippery Rock' : (child.studioID == 2 ? 'Grove City' : (child.studioID == 3 ? 'Sharon' : (child.studioID == 4 ? 'Mercer' : 'Unknown Studio')))}">
+							</td>
+							<td th:text="${child.registrationDate}" />
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+</body>
+
+</html>

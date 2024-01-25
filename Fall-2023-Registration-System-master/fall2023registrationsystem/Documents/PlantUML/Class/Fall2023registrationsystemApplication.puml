@@ -1,0 +1,7 @@
+
+@startuml
+class Fall2023registrationsystemApplication {
+    + {static} main(args : String[]) : void
+}
+
+@enduml

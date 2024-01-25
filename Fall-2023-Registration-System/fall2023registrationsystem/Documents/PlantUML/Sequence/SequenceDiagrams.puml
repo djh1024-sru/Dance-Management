@@ -1,0 +1,19 @@
+/**
+ * @startuml FileUpload
+ * actor Admin
+ * Admin -> UploadPage : select file for upload
+ * Admin -> UploadPage : click upload file button
+ * UploadPage -> IFileUploaderService : uploadFile(MultipartFile file)
+ * IFileUploaderService -> FileUploaderServiceImpl : verifies uploadFile
+ * FileUploaderServiceImpl -> Admin : success message or error thrown
+ * Admin -> UploadPage : save excel data into db: yes
+ * UploadPage -> IExcelDataService : passes data as list
+ * IExcelDataService -> ExcelDataServiceImpl : getExcelDataAsList()
+ * actor MySQL
+ * ExcelDataServiceImpl -> MySQL : createList(List<DataFieldsLocation>)
+ * ExcelDataServiceImpl -> IExcelDataService : saveExcelData(List<DataFieldsLocation>)
+ * IExcelDataService -> MySQL : saves data
+ * Admin -> UploadPage : save excel data into db: no
+ * UploadPage -> Admin : redirects to home page
+ * @enduml
+*/

@@ -1,0 +1,33 @@
+//alexis sutch
+
+@startuml
+left to right direction
+actor "Manager" as M
+rectangle "Manager Interaction System" {
+  (Access Dashboard) as UC1
+  (Create Instructor/Parent) as UC2
+  (Register New Child) as UC3
+  (Check Parent Balance) as UC4
+  (Make Payment) as UC5
+  (View Schedule) as UC6
+  (Edit Activities) as UC7
+  (Delete Activities) as UC8
+  (View Class List) as UC9
+  (Delete Child from Activity) as UC10
+  (Assign Child to Activity) as UC11
+  (Upload Excel Files) as UC12
+}
+
+M -- UC1
+M -- UC2
+M -- UC3
+M -- UC4
+UC4 --> UC5
+M -- UC6
+UC6 --> UC7
+UC6 --> UC8
+M -- UC9
+UC9 --> UC10
+UC9 --> UC11
+M -- UC12
+@enduml

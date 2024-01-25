@@ -1,0 +1,11 @@
+
+@startuml
+interface ChargesRepository {
+}
+
+class Charges {
+}
+
+ChargesRepository ..> Charges : queries
+
+@enduml

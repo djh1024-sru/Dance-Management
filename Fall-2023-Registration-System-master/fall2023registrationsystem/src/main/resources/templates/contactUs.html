@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Homepage</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		h2 {
+			font-size: 28px;
+			text-align: center;
+		}
+		h3 {
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/register}">Register</a>
+			<a th:href="@{/login}">Login</a>
+			<a th:href="@{/contactUs}">Contact Us</a>
+		</div>
+	</div>
+	
+	<div class="centerContainer">
+		<h1>Contact Us!</h1><br>
+		<h2>Phone</h2>
+		<h3>(878)758-1639</h3><br>
+		
+		<h2>Email</h2>
+		<h3>tdc@studio.com</h3>
+	</div>
+</body>
+</html>
+		

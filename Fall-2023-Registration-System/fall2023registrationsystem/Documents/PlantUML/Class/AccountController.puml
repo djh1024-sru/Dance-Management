@@ -1,0 +1,31 @@
+@startuml
+class AccountController {
+    - userService : UserService
+    - passwordEncoder : BCryptPasswordEncoder
+
+    + viewAccount(model : Model) : String
+    + changePasswordForm() : String
+    + changePassword(oldPassword : String, newPassword : String, model : Model) : String
+    + createNewAccountForm() : String
+    + createNewAccount(user : User, model : Model) : String
+    + deleteUserAccount() : String
+}
+
+class UserService {
+}
+
+class BCryptPasswordEncoder {
+}
+
+class Model {
+}
+
+class User {
+}
+
+AccountController --> "1" UserService : uses
+AccountController --> "1" BCryptPasswordEncoder : uses
+AccountController --> "1" Model : uses
+AccountController --> "1" User : uses
+
+@enduml

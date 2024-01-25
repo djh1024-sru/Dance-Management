@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Export Page</title>
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.btn-info {
+			background-color: rgb(158, 202, 216);
+			border-color: rgb(158, 202, 216);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a class="active" th:href="@{/dashboards}">Home</a>
+			<a th:href="@{/account}">Account</a>
+			<a th:href="@{/logout}">Sign Out</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h2>Choose Files to Export</h2>
+		<div class="d-grid gap-2 col-12 mx-auto">
+			<br>
+			<form action="/export/adminData" method="post">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button class="btn btn-info" type="submit">Export Admin/Manager/Location Data to Excel</button>
+			</form>
+			<a th:href="@{/dashboards}" class="btn btn-secondary">Back to Dashboard</a>
+		</div>
+	</div>
+</body>

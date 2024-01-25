@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+actor "User" as U
+rectangle "Transaction System" {
+  (Show Payment Form) as UC1
+  (Process Payment) as UC2
+  (Handle Parent Payment Form) as UC3
+}
+
+U -- UC1
+U -- UC2
+U -- UC3
+@enduml

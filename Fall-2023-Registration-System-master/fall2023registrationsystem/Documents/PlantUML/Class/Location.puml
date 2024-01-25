@@ -1,0 +1,25 @@
+
+@startuml
+class Location {
+    - studioID : int
+    - locationName : String
+    - address : String
+    - address2 : String
+    - city : String
+    - state : String
+    - zip : String
+    - phoneNum : String
+    - activities : Activities
+    - instructors : Set<Instructor>
+}
+
+class Activities {
+}
+
+class Instructor {
+}
+
+Location "1" -- "1" Activities : has
+Location "1" -- "*" Instructor : has
+
+@enduml

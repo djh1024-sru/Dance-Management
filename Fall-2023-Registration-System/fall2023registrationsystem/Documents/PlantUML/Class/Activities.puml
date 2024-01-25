@@ -1,0 +1,18 @@
+
+@startuml
+class Activities {
+    - activityID : String
+    - locationName : String
+    - weekDay : String
+    - startTime : String
+    - endTime : String
+    - activityLevel : String
+    - instructorID : Integer
+    - location : Location
+}
+
+class Location {
+}
+
+Activities --> "1" Location : has
+@enduml

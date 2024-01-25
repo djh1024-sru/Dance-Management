@@ -1,0 +1,21 @@
+@startuml
+start
+:Access payment form;
+:Enter payment details;
+:Submit payment form;
+if (Validate payment details) then (yes)
+  :Process payment through TransactionRepository;
+  if (Payment successful?) then (yes)
+    :Record transaction details;
+    :Generate receipt;
+  else (no)
+    :Display payment error;
+    stop
+  endif
+else (no)
+  :Display validation error;
+  stop
+endif
+:Transaction completed;
+stop
+@enduml

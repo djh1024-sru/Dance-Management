@@ -1,0 +1,19 @@
+
+@startuml
+interface ExcelDataService {
+    + getExcelDataAsList() : List<Location>
+    + saveExcelData(locList : List<Location>) : int
+    + getActDataAsList() : List<Activities>
+    + saveActData(actList : List<Activities>) : int
+}
+
+class Location {
+}
+
+class Activities {
+}
+
+ExcelDataService ..> Location : uses
+ExcelDataService ..> Activities : uses
+
+@enduml

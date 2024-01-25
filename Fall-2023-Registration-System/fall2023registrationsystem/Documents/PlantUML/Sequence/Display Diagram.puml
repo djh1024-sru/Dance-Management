@@ -1,0 +1,27 @@
+@startuml
+participant DisplayServicesImpl
+participant DataFieldsLocationRepository
+participant DataFieldsInstructorRepository
+participant DataFieldsChildRegistrationRepository
+participant List
+participant List1
+participant List2
+
+DisplayServicesImpl -> DataFieldsLocationRepository: locationRepo.findAll()
+activate DisplayServicesImpl
+DataFieldsLocationRepository -> List: dataFieldsLocationList
+List --> DisplayServicesImpl : return dataFieldsLocationList
+deactivate DisplayServicesImpl
+
+DisplayServicesImpl -> DataFieldsInstructorRepository: instructorRepo.findAll()
+activate DisplayServicesImpl
+DataFieldsInstructorRepository -> List1: dataFieldsInstructorList
+List1 --> DisplayServicesImpl : return dataFieldsInstructorList
+deactivate DisplayServicesImpl
+
+DisplayServicesImpl -> DataFieldsChildRegistrationRepository: childRepo.findAll()
+activate DisplayServicesImpl
+DataFieldsChildRegistrationRepository -> List2: dataFieldsChildList
+List2 --> DisplayServicesImpl : return dataFieldsChildList
+deactivate DisplayServicesImpl
+@enduml

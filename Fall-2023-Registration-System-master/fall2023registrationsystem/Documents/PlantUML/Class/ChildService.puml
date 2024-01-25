@@ -1,0 +1,18 @@
+
+@startuml
+class ChildService {
+    - childRepository : ChildRepository
+
+    + updateChildAssignment(childAssignment : Children) : void
+}
+
+class ChildRepository {
+}
+
+class Children {
+}
+
+ChildService --> "1" ChildRepository : uses
+ChildService --> "1" Children : operates on
+
+@enduml

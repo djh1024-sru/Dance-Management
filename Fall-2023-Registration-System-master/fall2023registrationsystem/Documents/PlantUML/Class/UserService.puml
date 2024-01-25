@@ -1,0 +1,26 @@
+@startuml
+class UserService {
+    -adminRepository : AdminRepository
+    -managerRepository : ManagerRepository
+    -instructorRepository : InstructorRepository
+    -parentContactRepository : ParentRepository
+    -userRepository : UserRepository
+    -passwordEncoder : BCryptPasswordEncoder
+    +populateUserRepository()
+    +getCurrentUser()
+    +updateAdmin()
+    +updateInstructor()
+    +updateManager()
+    +updateParent()
+    +updateUser()
+    +updatePasswordForAllRoles()
+    +findByEmail()
+}
+
+UserService "1" -- "1" AdminRepository
+UserService "1" -- "1" ManagerRepository
+UserService "1" -- "1" InstructorRepository
+UserService "1" -- "1" ParentRepository
+UserService "1" -- "1" UserRepository
+UserService "1" -- "1" BCryptPasswordEncoder
+@enduml

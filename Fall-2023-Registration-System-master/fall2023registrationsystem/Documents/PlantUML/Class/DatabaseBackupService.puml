@@ -1,0 +1,44 @@
+
+@startuml
+class DatabaseBackupService {
+    + backup() : Map<String, String>
+}
+
+class Connection {
+}
+
+class DatabaseMetaData {
+}
+
+class ResultSet {
+}
+
+class ResultSetMetaData {
+}
+
+class Statement {
+}
+
+class Workbook {
+}
+
+class Sheet {
+}
+
+class Row {
+}
+
+class Cell {
+}
+
+DatabaseBackupService ..> Connection : uses
+DatabaseBackupService ..> DatabaseMetaData : uses
+DatabaseBackupService ..> ResultSet : uses
+DatabaseBackupService ..> ResultSetMetaData : uses
+DatabaseBackupService ..> Statement : uses
+DatabaseBackupService ..> Workbook : uses
+DatabaseBackupService ..> Sheet : uses
+DatabaseBackupService ..> Row : uses
+DatabaseBackupService ..> Cell : uses
+
+@enduml

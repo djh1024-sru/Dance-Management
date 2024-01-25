@@ -1,0 +1,19 @@
+
+@startuml
+class Charges {
+    - classLevel : int
+    - flatRate : float
+    - twoClassRate : float
+    - multiClassRate : float
+    - siblingDiscount : double
+    - activities : Set<Activities>
+
+    + Charges(classLevel : int, flatRate : float, twoClassRate : float, multiClassRate : float, siblingDiscount : double, activities : Set<Activities>)
+}
+
+class Activities {
+}
+
+Charges --> "*" Activities : has
+
+@enduml

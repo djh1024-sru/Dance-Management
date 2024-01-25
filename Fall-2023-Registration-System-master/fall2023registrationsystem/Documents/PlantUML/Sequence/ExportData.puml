@@ -1,0 +1,12 @@
+@startuml
+actor Admin
+participant "ExportController" as EC
+entity "ExcelDataService" as EDS
+database "Fall2023RegistrationSystem" as DR
+Admin -> EC : exportDataToExcel()
+EC -> EDS : prepareDataForExport()
+EDS -> DR : findAll()
+DR --> EDS : dataList
+EDS --> EC : excelFile
+EC --> Admin : downloadExcelFile(excelFile)
+@enduml

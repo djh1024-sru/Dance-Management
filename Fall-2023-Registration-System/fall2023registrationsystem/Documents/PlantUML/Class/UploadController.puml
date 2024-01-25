@@ -1,0 +1,15 @@
+@startuml
+class UploadController {
+    +uploadActivityForm()
+    +uploadAdminForm()
+    +uploadManagerForm()
+    +uploadPCForm()
+    +uploadChargesForm()
+    +uploadInstructorForm()
+    +uploadFile()
+    +uploadAdminFile()
+    +uploadChargesFile()
+    +uploadInstructorFile()
+    +uploadParentChildFile()
+}
+@enduml

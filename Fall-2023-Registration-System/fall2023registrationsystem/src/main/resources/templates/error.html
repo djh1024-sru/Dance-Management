@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>403 Forbidden</title>
+	<link th:href="@{/header.css}" rel="stylesheet" />
+	<link th:href="@{/centerContainer.css}" rel="stylesheet" />
+	<link th:href="@{/general.css}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="header">
+		<a th:href="@{/}" class="logo">Thangiah Dance Company</a>
+		<div class="header-right">
+			<a th:href="@{/login}">Login</a>
+		</div>
+	</div>
+
+	<div class="centerContainer">
+		<h1>Your account has been de-activated.</h1>
+		<p>Please contact your system administrator for assistance.</p>
+		<br>
+		<div class="d-grid gap-2 col-8 mx-auto">
+			<a th:href="@{/login}" class="btn btn-secondary btn-sm">Go Back to Login</a>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+
+@startuml
+class Children {
+    - childID : int
+    - activityLevel : Integer
+    - activityID : String
+    - lastName : String
+    - firstName : String
+    - birthDate : String
+    - age : int
+    - grade : String
+    - registrationDate : String
+    - status : String
+    - parentID : int
+    - studioID : int
+
+}
+
+@enduml
